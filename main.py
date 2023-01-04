@@ -13,7 +13,12 @@ def getUpdates():
 
 def sendMessage(chat_id:str, text:str):
     url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
-    r = requests.get(url,params={'chat_id':chat_id, 'text':text})
+    params = {
+        'chat_id':chat_id, 
+        'text':text,
+      
+        }
+    r = requests.get(url,params=params)
     data = r.json()
     return data
 
@@ -38,5 +43,6 @@ def main():
         print(f'upd_len = {upd_len}, upd_new = {upd_new}')
         sleep(2)
     
+
 if __name__ == '__main__':
     main()
